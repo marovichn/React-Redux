@@ -1,4 +1,4 @@
-import classes from './Counter.module.css';
+import classes from "./Counter.module.css";
 
 const Counter = () => {
   const toggleCounterHandler = () => {};
@@ -6,7 +6,7 @@ const Counter = () => {
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>-- COUNTER VALUE --</div>
+      <div className={classes.value}>--Value--</div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
   );
