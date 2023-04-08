@@ -1,4 +1,4 @@
-import Counter from "./components/Counter";
+/* import Counter from "./components/Counter"; */
 import Auth from "./components/Auth";
 import UserProfile from "./components/UserProfile";
 import Header from "./components/Header";
@@ -13,7 +13,7 @@ function App() {
       <Header />
       {!isAuthenticated && <Auth />}
       {isAuthenticated && <UserProfile />}
-      <Counter />
+      {/* <Counter /> */}
     </React.Fragment>
   );
 }

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./Auth.module.css";
-import { authActions } from "../store/redux";
+import { authActions } from "../store/auth";
 import { useRef } from "react";
 import { useState } from "react";
 
