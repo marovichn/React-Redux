@@ -34,6 +34,10 @@ const Auth = () => {
       passwordInput.current.value.trim().length >= 5
     ) {
       dispatch(authActions.login());
+      setInputs({
+        email: "",
+        password: "",
+      });
     }
     if (inputEmailRef.current.value.trim().length === 0) {
       setLoginErrorEmail(true);
@@ -41,11 +45,6 @@ const Auth = () => {
     if (passwordInput.current.value.trim().length <= 5) {
       setLoginErrorPassword(true);
     }
-
-    setInputs({
-      email: "",
-      password: "",
-    });
   };
 
   return (
