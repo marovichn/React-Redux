@@ -26,7 +26,16 @@ const storeSlice = createSlice({
       }
     },
 
-    removeItemFromCart(state, action) {},
+    removeItemFromCart(state, action) {
+      const newRemovedItem = action.payload;
+      const removedItem = state.items.find(
+        (item) => item.id === action.payload.id
+      );
+      if (removedItem.quantity !== 1) {
+        removedItem.quantity--;
+        removedItem.totalPrice = removedItem.totalPrice - newRemovedItem.price;
+      }
+    },
   },
 });
 
