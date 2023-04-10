@@ -34,6 +34,9 @@ const storeSlice = createSlice({
       if (removedItem.quantity !== 1) {
         removedItem.quantity--;
         removedItem.totalPrice = removedItem.totalPrice - newRemovedItem.price;
+      } else {
+        const indexOfRemoved = state.items.indexOf(removedItem);
+        state.items.splice(indexOfRemoved, 1);
       }
     },
   },
