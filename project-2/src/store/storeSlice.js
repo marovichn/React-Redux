@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./uiSlice";
 
 const initialStoreState = {
   items: [],
@@ -43,6 +44,52 @@ const storeSlice = createSlice({
     },
   },
 });
+
+export const sendCartData = (cart) => {
+  return async (dispatch) => {
+    dispatch(
+      uiActions.showNotification({
+        status: "pending",
+        title: "Sending data...",
+        message: "Cart data is sending...",
+      })
+    );
+
+    const sendRequest = async () => {
+      const response = await fetch(
+        "https://simple-react-app-2b7b6-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+          headers: {
+            "Content-Type": "app/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+    };
+    try {
+      await sendRequest();
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "Success!",
+          message: "Successfully sent cart data :)",
+        })
+      );
+    } catch (err) {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Failed :(",
+          message: err.message,
+        })
+      );
+    }
+  };
+};
 
 export const storeActions = storeSlice.actions;
 export default storeSlice;
