@@ -16,7 +16,10 @@ export const sendCartData = (cart) => {
         "https://simple-react-app-2b7b6-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
         {
           method: "PUT",
-          body: JSON.stringify(cart),
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }),
           headers: {
             "Content-Type": "app/json",
           },

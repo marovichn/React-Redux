@@ -16,12 +16,18 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
+    dispatch(loadStoreData());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (isInital) {
-      dispatch(loadStoreData());
       isInital = false;
       return;
     }
-    dispatch(sendCartData(cart));
+
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
 
   return (

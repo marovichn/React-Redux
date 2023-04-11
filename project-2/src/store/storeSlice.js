@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialStoreState = {
   items: [],
   totalQuantity: 0,
+  changed: false,
 };
 
 const storeSlice = createSlice({
@@ -13,6 +14,7 @@ const storeSlice = createSlice({
       state.totalQuantity++;
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
+      state.changed = true;
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -33,6 +35,7 @@ const storeSlice = createSlice({
       const removedItem = state.items.find(
         (item) => item.id === action.payload.id
       );
+      state.changed = true;
       if (removedItem.quantity !== 1) {
         removedItem.quantity--;
         removedItem.totalPrice = removedItem.totalPrice - newRemovedItem.price;
