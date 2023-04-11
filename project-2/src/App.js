@@ -5,7 +5,7 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { useEffect } from "react";
 import Notification from "./components/UI/Notification";
-import { sendCartData } from "./store/storeSlice";
+import { loadStoreData, sendCartData } from "./store/cart-actions";
 
 let isInital = true;
 
@@ -17,10 +17,8 @@ function App() {
 
   useEffect(() => {
     if (isInital) {
+      dispatch(loadStoreData());
       isInital = false;
-      return;
-    }
-    if (cart.items.length === 0) {
       return;
     }
     dispatch(sendCartData(cart));
