@@ -42,8 +42,16 @@ function App() {
       );
     };
 
-    sendCartData().catch();
-  }, [cart]);
+    sendCartData().catch((err) => {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Failed :(",
+          message: err.message,
+        })
+      );
+    });
+  }, [cart, dispatch]);
 
   return (
     <Layout>
