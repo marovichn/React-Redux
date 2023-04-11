@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { uiActions } from "./store/uiSlice";
 import Notification from "./components/UI/Notification";
 
+let isInital = true;
+
 function App() {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.ui.showCart);
@@ -44,6 +46,11 @@ function App() {
         })
       );
     };
+
+    if (isInital) {
+      isInital = false;
+      return;
+    }
 
     sendCartData().catch((err) => {
       dispatch(
