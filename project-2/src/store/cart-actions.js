@@ -65,7 +65,12 @@ export const loadStoreData = () => {
     };
     try {
       const cartData = await sendRequest();
-      dispatch(storeActions.replaceCart(cartData));
+      dispatch(
+        storeActions.replaceCart({
+          items: cartData.items ? cartData.items : [],
+          totalQuantity: cartData.totalQuantity,
+        })
+      );
     } catch (err) {
       dispatch(
         uiActions.showNotification({
