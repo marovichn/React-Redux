@@ -31,7 +31,7 @@ export const ProductsContext = React.createContext({
   toggleFav: () => {},
 });
 
-export default (props) => {
+const configureCtx = (props) => {
   const [productsList, setProductsList] = useState([
     {
       id: "p1",
@@ -80,3 +80,5 @@ export default (props) => {
     </ProductsContext.Provider>
   );
 };
+
+export default configureCtx;

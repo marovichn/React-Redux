@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 
 import FavoriteItem from "../components/Favorites/FavoriteItem";
 import "./Products.css";
-import { ProductsContext } from "../context/products-context";
 import { useStore } from "../hooks-store/store";
 
 const Favorites = (props) => {
