@@ -46,3 +46,4 @@ const configureStore = () => {
 };
 
 export default configureStore;
+//same can be done for any other stores
